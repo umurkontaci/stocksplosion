@@ -1,3 +1,5 @@
 node_modules/
 .idea/
 .sass-cache/
+client/app/scripts/dist.*
+client/app/stylesheets/*.css
