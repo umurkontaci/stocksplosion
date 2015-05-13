@@ -1,7 +1,11 @@
-import ticker from './ticker.es6'
+import repo from './repository.es6'
 console.log('Hello');
 
-ticker.getAll().then(
+repo.configure({
+  rootUrl: 'http://localhost:9001'
+});
+
+repo.getAll().then(
   function (success) {
     console.log(success);
   },

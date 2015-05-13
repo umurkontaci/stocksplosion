@@ -1,4 +1,5 @@
 import request from 'superagent'
+import _ from 'lodash'
 
 function getUrl(url) {
   return new Promise(function (resolve, reject) {
@@ -18,12 +19,18 @@ function getUrl(url) {
     });
   });
 }
+let config = {
+  rootUrl: ''
+};
 
 export default {
+  configure(cfg) {
+    _.extend(config, cfg);
+  },
   getAll() {
-    return getUrl('http://localhost:8001/api/company');
+    return getUrl(`${config.rootUrl}/api/company`);
   },
   getDetail(companySymbol, startDate, endDate) {
-    return getUrl(`http://localhost:8001/api/${companySymbol}/symbol?startdate=${startDate}&enddate=${endDate}`);
+    return getUrl(`${config.rootUrl}/api/${companySymbol}/symbol?startdate=${startDate}&enddate=${endDate}`);
   }
 }
