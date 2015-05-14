@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default React.createClass({
   renderText() {
     if (this.props.selected) {

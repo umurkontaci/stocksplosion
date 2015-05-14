@@ -5,8 +5,7 @@ var reactify = require('reactify');
 var babelify = require('babelify');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
-//var watchify = require('watchify');
-//var concat = require('gulp-concat');
+var concat = require('gulp-concat');
 
 function getBundler() {
   return browserify({
@@ -44,14 +43,27 @@ gulp.task('sass:watch', function () {
   return gulp.watch('./client/app/stylesheets/*.scss', ['sass']);
 });
 
-gulp.task('copy', function () {
+gulp.task('copyHtml', function () {
   return gulp.src('./client/app/index.html')
-    .pipe(gulp.dest('./client/dist/'));
+    .pipe(gulp.dest('./client/dist/scripts'));
 });
 
-gulp.task('copy:watch', function () {
+gulp.task('copyHtml:watch', function () {
   return gulp.watch('./client/app/index.html', ['copy']);
 });
 
+gulp.task('copyVendorJS', function () {
+  return gulp.src([
+    './node_modules/jquery/dist/jquery.js',
+    './node_modules/typeahead.js/dist/typeahead.bundle.js',
+    './node_modules/react/dist/react.js'
+  ])
+  .pipe(concat('vendor.js'))
+  .pipe(gulp.dest('./client/dist/scripts'))
+});
+
+
+gulp.task('copy', ['copyHtml', 'copyVendorJS']);
+gulp.task('copy:watch', ['copyHtml:watch']);
 gulp.task('watch', ['default', 'browserify:watch', 'sass:watch', 'copy:watch']);
 gulp.task('default', ['browserify', 'sass', 'copy']);

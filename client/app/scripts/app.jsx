@@ -1,15 +1,15 @@
 import "babel/polyfill";
 import repo from './repository.es6'
-import React from 'react'
 import CompanyList from './CompanyList.jsx'
 import AppDispatcher from './AppDispatcher.jsx'
 import CompanyStore from './CompanyStore.es6'
 import CompanyGraph from './CompanyGraph.jsx'
+import AutoComplete from './AutoComplete.jsx'
+
 import EventEmitter from 'wolfy87-eventemitter'
 
+
 console.log('Hello');
-
-
 
 repo.configure({
   rootUrl: 'http://localhost:8001'

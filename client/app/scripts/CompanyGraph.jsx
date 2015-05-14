@@ -1,4 +1,3 @@
-import React from 'react'
 import repo from './repository.es6'
 import moment from 'moment'
 import Chart from 'chart.js'

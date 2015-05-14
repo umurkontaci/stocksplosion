@@ -16,13 +16,15 @@
     "chart.js": "^1.0.2",
     "d3": "^3.5.5",
     "flux": "^2.0.3",
+    "jquery": "^2.1.4",
     "lodash": "^3.8.0",
     "minifyify": "^7.0.0",
     "moment": "^2.10.3",
     "react": "^0.13.3",
     "reactify": "^1.1.1",
     "request": "^2.55.0",
-    "superagent": "^1.2.0"
+    "superagent": "^1.2.0",
+    "typeahead.js": "git://github.com/umurkontaci/typeahead.js.git"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
