@@ -13,7 +13,7 @@ http.createServer(function (req, res) {
     .end(function (err, resp) {
       var headers = {};
       var corsHeaders = {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': req.headers.origin,
         'Access-Control-Allow-Methods': 'GET'
       };
       _.extend(headers, resp.headers, corsHeaders);
