@@ -67,7 +67,7 @@ export default React.createClass({
   render() {
     if (this.state.loaded) {
       return <div>
-        {this.props.company.name} - {JSON.stringify(this.state.details)}
+        <h1>{this.props.company.name} - {this.props.company.symbol}</h1>
         <canvas width="600" height="400"/>
       </div>
     } else if (this.state.failed) {

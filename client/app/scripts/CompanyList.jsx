@@ -10,7 +10,7 @@ export default React.createClass({
       selectedCompany: null
     };
   },
-  getDataSets() {
+  getDataSet() {
     return {
       source: (query, resultFn) => {
         query = query.toLowerCase();
@@ -35,14 +35,13 @@ export default React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="col-md-6 col-md-offset-3">
         <AutoComplete highlight={true}
-                      minLength="2"
+                      minLength="0"
                       onSelect={this.handleSelectCompany}
-                      datasets={this.getDataSets()}
-                      value={this.getDataSets().display(this.state.selectedCompany)}
+                      dataset={this.getDataSet()}
+                      value={this.getDataSet().display(this.state.selectedCompany)}
           />
-        <ul>{this.props.companies.map(this.renderCompanyElement)}</ul>
       </div>
     );
   }

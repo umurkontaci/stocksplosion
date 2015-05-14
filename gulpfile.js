@@ -45,7 +45,7 @@ gulp.task('sass:watch', function () {
 
 gulp.task('copyHtml', function () {
   return gulp.src('./client/app/index.html')
-    .pipe(gulp.dest('./client/dist/scripts'));
+    .pipe(gulp.dest('./client/dist'));
 });
 
 gulp.task('copyHtml:watch', function () {
