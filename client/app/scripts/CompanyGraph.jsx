@@ -13,15 +13,8 @@ export default React.createClass({
       details: null
     };
   },
-  componentWillReceiveProps(nextProps) {
-    if (this.props.company !== nextProps.company) {
-      this.setState({
-        loaded: false,
-        failed: false,
-        details: null
-      });
-    }
-    repo.getDetail(nextProps.company.symbol, this.state.startDate, this.state.endDate).then((details) => {
+  updateDetails(props) {
+    repo.getDetail(props.company.symbol, this.state.startDate, this.state.endDate).then((details) => {
       this.setState({
         loaded: true,
         details
@@ -32,6 +25,16 @@ export default React.createClass({
         error
       });
     });
+  },
+  componentWillReceiveProps(nextProps) {
+    if (this.props.company !== nextProps.company) {
+      this.setState({
+        loaded: false,
+        failed: false,
+        details: null
+      });
+      this.updateDetails(nextProps);
+    }
   },
   parsePriceData(data) {
     let labels = [];
@@ -64,6 +67,9 @@ export default React.createClass({
       this.chart = new Chart(this.ctx).Line(this.parsePriceData(this.state.details.prices));
     }
   },
+  componentDidMount() {
+    this.updateDetails(this.props);
+  },
   render() {
     if (this.state.loaded) {
       return <div>
@@ -73,7 +79,7 @@ export default React.createClass({
     } else if (this.state.failed) {
       return <div>Error {this.error}</div>
     } else {
-      return <div>Loading...</div>
+      return <div>Loading {this.props.company.name}</div>
     }
   }
 });

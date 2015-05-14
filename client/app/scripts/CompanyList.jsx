@@ -5,11 +5,6 @@ import CompanyElement from './CompanyElement.jsx'
 import AutoComplete from './AutoComplete.jsx'
 
 export default React.createClass({
-  getInitialState() {
-    return {
-      selectedCompany: null
-    };
-  },
   getDataSet() {
     return {
       source: (query, resultFn) => {
@@ -22,15 +17,12 @@ export default React.createClass({
   },
   handleSelectCompany(company) {
     console.log(company);
-    this.setState({
-      selectedCompany: company
-    });
     window.emitter.emit('selectedCompanyChange', company);
   },
   renderCompanyElement(company) {
     return <CompanyElement key={company.symbol}
                            company={company}
-                           selected={company === this.state.selectedCompany}
+                           selected={company === this.props.selectedCompany}
                            clickHandler={() => this.handleSelectCompany(company)} />;
   },
   render() {
@@ -40,7 +32,7 @@ export default React.createClass({
                       minLength="0"
                       onSelect={this.handleSelectCompany}
                       dataset={this.getDataSet()}
-                      value={this.getDataSet().display(this.state.selectedCompany)}
+                      value={this.getDataSet().display(this.props.selectedCompany)}
           />
       </div>
     );

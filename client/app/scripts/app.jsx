@@ -49,8 +49,14 @@ let App = React.createClass({
     window.emitter.off('selectedCompanyChange', this.selectedCompanyChangeHandler);
   },
   render() {
-    let companyGraph = <div className="col-md-6 col-md-offset-3"><CompanyGraph company={this.state.selectedCompany} /></div>;
-    let companyList = <div className="col-md-12"><CompanyList companies={this.state.companies} /></div>;
+    let companyGraph = (
+      <div className="col-md-6 col-md-offset-3">
+        <CompanyGraph company={this.state.selectedCompany} />
+      </div>);
+    let companyList = (
+      <div className="col-md-12">
+        <CompanyList selectedCompany={this.state.selectedCompany} companies={this.state.companies} />
+      </div>);
     if (this.state.loaded) {
       if (this.state.selectedCompany) {
         return (
