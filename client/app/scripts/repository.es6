@@ -31,6 +31,6 @@ export default {
     return getUrl(`${config.rootUrl}/api/company`);
   },
   getDetail(companySymbol, startDate, endDate) {
-    return getUrl(`${config.rootUrl}/api/${companySymbol}/symbol?startdate=${startDate}&enddate=${endDate}`);
+    return getUrl(`${config.rootUrl}/api/company/${companySymbol}?startdate=${startDate}&enddate=${endDate}`);
   }
 }

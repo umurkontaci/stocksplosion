@@ -4,7 +4,8 @@ import React from 'react'
 import CompanyList from './CompanyList.jsx'
 import AppDispatcher from './AppDispatcher.jsx'
 import CompanyStore from './CompanyStore.es6'
-import EventEmitter from 'wolfy87-eventemitter';
+import CompanyGraph from './CompanyGraph.jsx'
+import EventEmitter from 'wolfy87-eventemitter'
 
 console.log('Hello');
 
@@ -49,7 +50,15 @@ let App = React.createClass({
   },
   render() {
     if (this.state.loaded) {
-      return <CompanyList companies={this.state.companies} />;
+      if (this.state.selectedCompany) {
+        return (<div>
+          <CompanyList companies={this.state.companies} />
+          <CompanyGraph company={this.state.selectedCompany} />
+        </div>);
+      } else {
+        return <CompanyList companies={this.state.companies} />
+
+      }
     } else if (this.state.failed) {
       return <div>Error: {this.error}</div>
     } else {
