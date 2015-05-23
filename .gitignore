@@ -3,3 +3,4 @@ node_modules/
 .sass-cache/
 client/dist/
 npm-debug.log
+client/app/bower
