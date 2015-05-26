@@ -4,7 +4,6 @@ ml/.idea
 ml/env/
 ml/tools/.ipynb_checkpoints/
 .sass-cache/
-client/dist/
 npm-debug.log
 client/app/bower
 *.pyc
