@@ -30,17 +30,17 @@ Total market value (sum of all prices for any given day) has been added to datas
 
 The following values are added for each company (and total market value):
 
-1) Rolling Mean - 3-day, 7-day, 15-day, 30-day
-2) Rolling Sum - 3-day, 7-day, 15-day, 30-day
-3) Rolling Standard Deviation - 3-day, 7-day, 15-day, 30-day
-4) Rolling Min - 3-day, 7-day, 15-day, 30-day
-5) Rolling Max - 3-day, 7-day, 15-day, 30-day
-6) Rolling Variance - 3-day, 7-day, 15-day, 30-day
-7) EWMA - 3-day, 7-day, 15-day, 30-day
-8) Lagged Price - 1-day, 2-day ... 15-day
-9) Price Change - 1-day, 2-day .... 15-day
-10) Percent Change  - 3-day, 7-day, 15-day, 30-day
-11) Lagged Price Change Direction - 1-day
+1. Rolling Mean - 3-day, 7-day, 15-day, 30-day
+2. Rolling Sum - 3-day, 7-day, 15-day, 30-day
+3. Rolling Standard Deviation - 3-day, 7-day, 15-day, 30-day
+4. Rolling Min - 3-day, 7-day, 15-day, 30-day
+5. Rolling Max - 3-day, 7-day, 15-day, 30-day
+6. Rolling Variance - 3-day, 7-day, 15-day, 30-day
+7. EWMA - 3-day, 7-day, 15-day, 30-day
+8. Lagged Price - 1-day, 2-day ... 15-day
+9. Price Change - 1-day, 2-day .... 15-day
+10. Percent Change  - 3-day, 7-day, 15-day, 30-day
+11. Lagged Price Change Direction - 1-day
 
 #### Train/Test Split
 The dataset is split into two from the middle, this is because it's a time-series dataset and we haven't seen any seasonalities.
