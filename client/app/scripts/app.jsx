@@ -12,7 +12,8 @@ import EventEmitter from 'wolfy87-eventemitter'
 console.log('Hello');
 
 repo.configure({
-  rootUrl: 'http://localhost:8001'
+  rootUrl: 'http://stocksplosion.apsis.io'
+  //rootUrl: 'http://localhost:8001'
 });
 
 //let appDispatcher = new AppDispatcher();
@@ -43,7 +44,7 @@ let App = React.createClass({
         failed: true,
         error
       });
-    })
+    });
   },
   componentWillUnmount() {
     window.emitter.off('selectedCompanyChange', this.selectedCompanyChangeHandler);
@@ -51,26 +52,31 @@ let App = React.createClass({
   render() {
     let companyGraph = (
       <div className="col-md-6 col-md-offset-3">
-        <CompanyGraph company={this.state.selectedCompany} />
+        <CompanyGraph company={this.state.selectedCompany}/>
       </div>);
     let companyList = (
       <div className="col-md-12">
-        <CompanyList selectedCompany={this.state.selectedCompany} companies={this.state.companies} />
+        <CompanyList selectedCompany={this.state.selectedCompany} companies={this.state.companies}/>
       </div>);
+    let help = (
+      <div className="col-md-12 text-center">
+        <p className="lead">Enter a company name to see its recent prices.</p>
+      </div>
+    );
+    let g;
+    if (this.state.selectedCompany) {
+      g = companyGraph
+    } else {
+      g = help
+    }
     if (this.state.loaded) {
-      if (this.state.selectedCompany) {
-        return (
-          <div>
-            <div className="row">
-              {companyList}
-            </div>
-            <div className="row">
-              {companyGraph}
-            </div>
+      return (
+        <div>
+          <div className="row">
+            {companyList}
+          </div>
+          <div className="row">{g}</div>
         </div>);
-      } else {
-        return <div className="row">{companyList}</div>;
-      }
     } else if (this.state.failed) {
       return <div>Error: {this.error}</div>
     } else {
